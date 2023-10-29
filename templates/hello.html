@@ -2,11 +2,98 @@
 <html>
 <head>
 <title>{{ title }}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
-{% block content %}
-<h3>Hello</h3>
-こんにちは、{{name}}さん。
-{% endblock %}
+	<h1>{{ title }}</h1>
+	<p>{{ message }}</p>
+	<ul>
+		{% for i in iv %}
+			<li>{{i}}</li>
+			{% endfor %}
+	</ul>
+	<form action="/" method="POST" enctype="multipart/form-data">
+		<!--親の個体値受け取り-->
+		<div>
+			<label for="H1">H:</label>
+			<input type="number" id="iv" name="iv" placeholder="H個体値"
+			 min="0" max="31" required>	
+
+			<label for="A1">A:</label>
+			<input type="number" id="iv" name="iv" placeholder="A個体値" 
+			min="0" max="31" required>
+
+			<label for="B1">B:</label>
+			<input type="number" id="iv" name="iv" placeholder="B個体値" 
+			min="0" max="31" required>
+			
+			<label for="C1">C:</label>
+			<input type="number" id="iv" name="iv" placeholder="C個体値" 
+			min="0" max="31" required>
+
+			<label for="D1">D:</label>
+			<input type="number" id="iv" name="iv" placeholder="D個体値" 
+			min="0" max="31" required>
+
+			<label for="S1">S:</label>
+			<input type="number" id="iv" name="iv" placeholder="S個体値" 
+			min="0" max="31" required>
+
+			<label for="item">アイテム:</label>
+			<select name="item" id="item">
+				<option value=""></option>
+				<option value="Destiny Knot">あかいいと</option>
+				<option value="Everstone">かわらずの石</option>
+				<option value="Power Weight">パワーウエイト(H)</option>
+				<option value="Power Bracer">パワーリスト(A)</option>
+				<option value="Power Belt">パワーベルト(B)</option>
+				<option value="Power Lens">パワーレンズ(C)</option>
+				<option value="Power Band">パワーバンド(D)</option>
+				<option value="Power Anklet">パワーアンクル(S)</option>
+			</select>
+		</div>
+		<div>
+			<label for="H2">H:</label>
+			<input type="number" id="iv" name="iv" placeholder="H個体値" 
+			min="0" max="31" required>
+
+			<label for="A2">A:</label>
+			<input type="number" id="iv" name="iv" placeholder="A個体値" 
+			min="0" max="31" required>
+
+			<label for="B2">B:</label>
+			<input type="number" id="iv" name="iv" placeholder="B個体値" 
+			min="0" max="31" required>
+			
+			<label for="C2">C:</label>
+			<input type="number" id="iv" name="iv" placeholder="C個体値" 
+			min="0" max="31" required>
+
+			<label for="D2">D:</label>
+			<input type="number" id="iv" name="iv" placeholder="D個体値" 
+			min="0" max="31" required>
+
+			<label for="S2">S:</label>
+			<input type="number" id="iv" name="iv" placeholder="S個体値" 
+			min="0" max="31" required>
+
+			<label for="item">アイテム:</label>
+			<select name="item" id="item">
+				<option value=""></option>
+				<option value="Destiny Knot">あかいいと</option>
+				<option value="Everstone">かわらずの石</option>
+				<option value="Power Weight">パワーウエイト(H)</option>
+				<option value="Power Bracer">パワーリスト(A)</option>
+				<option value="Power Belt">パワーベルト(B)</option>
+				<option value="Power Lens">パワーレンズ(C)</option>
+				<option value="Power Band">パワーバンド(D)</option>
+				<option value="Power Anklet">パワーアンクル(S)</option>
+			</select>
+		</div>
+		<div>
+
+			<input type="submit" value="送信">
+		</div>
+	</form>
 </body>
-</html>
