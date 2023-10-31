@@ -15,13 +15,14 @@ def get():
 def post():
 	form = request.form
 	iv = form.getlist("iv")
+	item = form.getlist("item")
 	return render_template('hello.html', 
 		title = 'Form Sample(post)',
-		iv = bleed(iv))
+		iv = bleed(iv),
+		item = item)
 
 #孵化個体シミュレータ
-def bleed(iv):
-	choice = [0,1,2,3,4,5]
+def bleed(iv,):
 	bleed_iv = [None for _ in range(6)]
 	if True:
 		bleed_iv[rm.randint(0,5)] = rm.randint(0,31)
