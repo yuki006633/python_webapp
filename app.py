@@ -18,19 +18,60 @@ def post():
 	item = form.getlist("item")
 	return render_template('hello.html', 
 		title = 'Form Sample(post)',
-		iv = bleed(iv),
+		iv = bleed(iv,item),
 		item = item)
 
 #孵化個体シミュレータ
-def bleed(iv,):
+def bleed(iv,item):
 	bleed_iv = [None for _ in range(6)]
-	if True:
-		bleed_iv[rm.randint(0,5)] = rm.randint(0,31)
-		for i in range(6):
-			if bleed_iv[i] == None:
-				bleed_iv[i] = iv[i + 6 * rm.randint(0,1)]
+	a = 0
+	if item[0][0] == item[1][0]: #両親ともにパワー系アイテムなら
+		tmp = rm.randint(0,1)
+		if tmp == 1:
+			a = 6
+		bleed_iv[itemidx(item[tmp])] = iv[itemidx(item[tmp]) + a]
+	elif item[0][0] == "パ":
+		bleed_iv[itemidx(item[0])] = iv[itemidx(item[0])]
+	elif item[1][0] == "パ":
+		bleed_iv[itemidx(item[1])] = iv[itemidx(item[1])+6]
+		
+
 	return bleed_iv
 
+def itemidx(item): #パワー系アイテムを添え字に変換
+	if item == "パワーウエイト(H)":
+		n = 0
+	elif item == "パワーリスト(A)":
+		n = 1
+	elif item == "パワーベルト(B)":
+		n = 2
+	elif item == "パワーレンズ(C)":
+		n = 3
+	elif item == "パワーバンド(D)":
+		n = 4
+	elif item == "パワーアンクル(S)":
+		n = 5
+	else:
+		n = -1
+	if n >= 0:
+		return n
+	else:
+		return None
+
+def getidx(iv): #リスト内でNoneが格納されているidxを返す
+	idx = []
+	for i in range(6):
+		if iv[i] == None:
+			idx.append(i)
+	return idx	
+	
+def power_item(item):
+	a = 0
+	if item[0][0] == item[1][0]:
+		tmp = rm.randint(0,1)
+		if tmp == 1:
+			a = 6
+		return 
 
 if __name__ == '__main__':
 	app.run(debug=True)
