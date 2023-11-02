@@ -25,16 +25,29 @@ def post():
 def bleed(iv,item):
 	bleed_iv = [None for _ in range(6)]
 	a = 0
-	if item[0][0] == item[1][0]: #両親ともにパワー系アイテムなら
+	count = 3
+	if (item[0][0] == item[1][0]) and item[0][0] == "パ"  and item[1][0] == "パ": #両親ともにパワー系アイテムなら
 		tmp = rm.randint(0,1)
+		count -= 1
 		if tmp == 1:
 			a = 6
 		bleed_iv[itemidx(item[tmp])] = iv[itemidx(item[tmp]) + a]
 	elif item[0][0] == "パ":
 		bleed_iv[itemidx(item[0])] = iv[itemidx(item[0])]
+		count -= 1
 	elif item[1][0] == "パ":
 		bleed_iv[itemidx(item[1])] = iv[itemidx(item[1])+6]
+		count -= 1
 		
+	if "あかいいと" in item:
+		count += 2
+
+	for i in range(count):
+		tmp = rm.sample(getidx(bleed_iv))
+		bleed_iv[tmp] = iv[rm.randint(0,1)][tmp]
+	
+	if 
+
 
 	return bleed_iv
 
@@ -58,7 +71,7 @@ def itemidx(item): #パワー系アイテムを添え字に変換
 	else:
 		return None
 
-def getidx(iv): #リスト内でNoneが格納されているidxを返す
+def getidx(iv): #リスト内でNoneが格納されているidxをリストで返す
 	idx = []
 	for i in range(6):
 		if iv[i] == None:
