@@ -42,11 +42,10 @@ def bleed(iv,item):
 	if "あかいいと" in item:
 		count += 2
 
+	idx = getidx(bleed_iv)#修正できそう
 	for i in range(count):
-		tmp = rm.sample(getidx(bleed_iv))
-		bleed_iv[tmp] = iv[rm.randint(0,1)][tmp]
-	
-	if 
+		tmp = rm.sample(idx,1)[0]
+		bleed_iv[tmp] = iv[tmp + (6 * rm.randint(0,1))]
 
 
 	return bleed_iv
