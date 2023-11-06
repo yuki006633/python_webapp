@@ -46,7 +46,11 @@ def bleed(iv,item):
 	for i in range(count):
 		tmp = rm.sample(idx,1)[0]
 		bleed_iv[tmp] = iv[tmp + (6 * rm.randint(0,1))]
+		idx.remove(tmp)
 
+	for i in range(6):
+		if bleed_iv[i] == None:
+			bleed_iv[i] = rm.randint(0,31)
 
 	return bleed_iv
 
