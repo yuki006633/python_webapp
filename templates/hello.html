@@ -4,13 +4,14 @@
 <title>{{ title }}</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="{{ url_for('static', filename='/style.css') }}">
 </head>
 <body>
-	<h1>{{ title }}</h1>
+	<p>{{ postmessage }}</p>
 	<p>{{ message }}</p>
 	<ul>
 		{% for i in item %}
-		<li>{{i}}</li>
+		<li>親アイテム:{{i}}</li>
 		{% endfor %}
 	</ul>
 	<ul>
@@ -97,8 +98,7 @@
 			</select>
 		</div>
 		<div>
-
-			<input type="submit" value="送信">
+			<input type="submit" value="計算">
 		</div>
 	</form>
 </body>

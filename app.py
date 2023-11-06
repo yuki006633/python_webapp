@@ -7,8 +7,8 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def get():
 	return render_template('hello.html', \
-		title = 'Form Sample(get)', \
-		message = '名前を入力して下さい。')
+		title = 'ポケモン孵化シミュレータ', \
+		message = '両親の個体値を入力してください')
 
 # postのときの処理
 @app.route('/', methods=['POST'])
@@ -17,7 +17,7 @@ def post():
 	iv = form.getlist("iv")
 	item = form.getlist("item")
 	return render_template('hello.html', 
-		title = 'Form Sample(post)',
+		postmessage = '以下の個体が産まれてきました',
 		iv = bleed(iv,item),
 		item = item)
 
@@ -80,14 +80,6 @@ def getidx(iv): #リスト内でNoneが格納されているidxをリストで�
 		if iv[i] == None:
 			idx.append(i)
 	return idx	
-	
-def power_item(item):
-	a = 0
-	if item[0][0] == item[1][0]:
-		tmp = rm.randint(0,1)
-		if tmp == 1:
-			a = 6
-		return 
 
 if __name__ == '__main__':
 	app.run(debug=True)
